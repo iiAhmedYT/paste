@@ -61,7 +61,7 @@ export default function EditorControls({
       setRecentlySaved(true);
       if (pasteId) {
         history.replace({
-          pathname: pasteId,
+          pathname: (import.meta.env.BASE_URL + pasteId).replace(/\/+/, '/'),
         });
         copy(window.location.href);
         document.title = 'paste | ' + pasteId;
@@ -96,7 +96,7 @@ export default function EditorControls({
     resetFunction.current();
     setLanguage('plain');
     history.replace({
-      pathname: '/',
+      pathname: import.meta.env.BASE_URL,
       hash: '',
     });
     document.title = 'paste';
