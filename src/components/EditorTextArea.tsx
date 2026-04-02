@@ -124,10 +124,14 @@ export default function EditorTextArea({
 
     resetFunctionRef.current = () => {
       editor.setValue('');
-      editor.focus();
+      if (!readOnly) {
+        editor.focus();
+      }
     };
 
-    editor.focus();
+    if (!readOnly) {
+      editor.focus();
+    }
   };
 
   const onChange: OnChange = useCallback(
